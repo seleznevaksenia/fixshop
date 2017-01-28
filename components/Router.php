@@ -2,7 +2,7 @@
 
 class Router
 {
-
+//Приватне поле
     private $routes;
 
     public function __construct()
