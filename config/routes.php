@@ -14,5 +14,6 @@ return array(
     'user/logout' => 'user/logout',
     'user/login' => 'user/login',
     '' => 'site/index', // actionIndex в SiteController
+    'contact' => 'site/contact',
     
 );
