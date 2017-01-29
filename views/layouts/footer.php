@@ -16,9 +16,22 @@
 <script src="/template/js/price-range.js"></script>
 <script src="/template/js/jquery.prettyPhoto.js"></script>
 <script src="/template/js/main.js"></script>
+
 <script>
-        var myDate = new Date();
-        document.getElementById("copy").innerHTML = "Copyright © "+myDate.getUTCFullYear();
+    $(document).ready(function () {
+        $(".add-to-cart").click(function () {
+            var id = $(this).attr("data-id");
+            $.post("/cart/addAjax/" + id, {}, function (data) {
+                $("#cart-count").html(data);
+                alert(data);
+            });
+            return false;
+        });
+    });
+    var myDate = new Date();
+    document.getElementById("copy").innerHTML = "Copyright © " + myDate.getUTCFullYear();
+    document.getElementById("copy").innerHTML = "Copyright © " + myDate.getUTCFullYear();
 </script>
+
 </body>
 </html>
