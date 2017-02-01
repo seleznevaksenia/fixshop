@@ -40,10 +40,12 @@
                         <tr>
                             <?php if ($productsInCarts): ?>
                                 <?php foreach ($products as $product): ?>
-                                    <td><?php echo $product['code']; ?></td>
-                                    <td><?php echo $product['name']; ?></td>
-                                    <td><?php echo $product['price']; ?></td>
-                                    <td><?php echo $productsInCarts[$product['id']]; ?></td>
+                        <tr>
+                            <td><?php echo $product['code']; ?></td>
+                            <td><?php echo $product['name']; ?></td>
+                            <td><?php echo $product['price']; ?></td>
+                            <td><?php echo $productsInCarts[$product['id']]; ?></td>
+                        </tr>
                                 <?php endforeach; ?>
                                 <td><?php echo $totalPrice; ?></td>
                             <?php else: ?>

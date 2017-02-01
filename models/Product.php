@@ -137,7 +137,9 @@ class Product
     {
         $db = Db::getConnection();
         $products = array();
-        $result = $db->query("SELECT * FROM product WHERE status = '1' AND id in ($productsIds)");
+        $productsIdsNew = implode(",", $productsIds);
+        $result = $db->query("SELECT * FROM product WHERE status = '1' AND id in ($productsIdsNew)");
+        $result->setFetchMode(PDO::FETCH_ASSOC);
 
         $i = 0;
         while ($row = $result->fetch()) {

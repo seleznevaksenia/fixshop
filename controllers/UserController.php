@@ -87,6 +87,7 @@ class UserController
     {
         //session_start();
         unset($_SESSION['user']);
+        unset($_SESSION['products']);
         header("Location:/");
     }
 }
