@@ -38,7 +38,7 @@
                                                 <?php echo $product['name'];?>
                                             </a>
                                         </p>
-                                        <a href="#" data-id=" <?php echo $product['id']; ?>"
+                                        <a href="#" data-id="<?php echo $product['id']; ?>"
                                            class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>В
                                             корзину</a>
                                     </div>

@@ -10,6 +10,7 @@ return array(
     'category/([0-9]+)' => 'catalog/category/$1', // actionCategory в CatalogController
     'cabinet/edit' =>  'cabinet/edit',
     'cart/addAjax/([0-9]+)' => 'cart/addAjax/$1',
+    'cart' => 'cart/index',
     'cabinet' =>  'cabinet/index',
     'user/register' => 'user/register',
     'user/logout' => 'user/logout',
