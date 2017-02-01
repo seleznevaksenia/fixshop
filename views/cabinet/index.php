@@ -11,7 +11,9 @@
                     <h3>Hello,<?php echo $user['user_name'];?></h3>
                 <ul>
                     <a href="/cabinet/edit"><li>Редактировать данные</li></a>
-                    <a href="#"> <li>Список покупок</li></a>
+                    <a href="/cart/">
+                        <li>Список покупок</li>
+                    </a>
                 </ul>
                 </div>
             </div>

@@ -12,16 +12,16 @@ class Product
     {
         $count = intval($count);
         $page = intval($page);
-        $offset = ($page - 1)  * $count;
-        
+        $offset = ($page - 1) * $count;
+
         $db = Db::getConnection();
         $productsList = array();
 
         $result = $db->query('SELECT id, name, price, image, is_new FROM product '
-                . 'WHERE status = "1"'
-                . 'ORDER BY id DESC '                
-                . 'LIMIT ' . $count
-                . ' OFFSET '. $offset);
+            . 'WHERE status = "1"'
+            . 'ORDER BY id DESC '
+            . 'LIMIT ' . $count
+            . ' OFFSET ' . $offset);
 
         $i = 0;
         while ($row = $result->fetch()) {
@@ -35,24 +35,24 @@ class Product
 
         return $productsList;
     }
-    
+
     /**
      * Returns an array of products
      */
     public static function getProductsListByCategory($categoryId = false, $page = 1)
     {
         if ($categoryId) {
-            
-            $page = intval($page);            
+
+            $page = intval($page);
             $offset = ($page - 1) * self::SHOW_BY_DEFAULT;
-        
-            $db = Db::getConnection();            
+
+            $db = Db::getConnection();
             $products = array();
             $result = $db->query("SELECT id, name, price, image, is_new FROM product "
-                    . "WHERE status = '1' AND category_id = '$categoryId' "
-                    . "ORDER BY id ASC "                
-                    . "LIMIT ".self::SHOW_BY_DEFAULT
-                    . ' OFFSET '. $offset);
+                . "WHERE status = '1' AND category_id = '$categoryId' "
+                . "ORDER BY id ASC "
+                . "LIMIT " . self::SHOW_BY_DEFAULT
+                . ' OFFSET ' . $offset);
 
             $i = 0;
             while ($row = $result->fetch()) {
@@ -64,11 +64,11 @@ class Product
                 $i++;
             }
 
-            return $products;       
+            return $products;
         }
     }
-    
-    
+
+
     /**
      * Returns product item by id
      * @param integer $id
@@ -77,16 +77,16 @@ class Product
     {
         $id = intval($id);
 
-        if ($id) {                        
+        if ($id) {
             $db = Db::getConnection();
-            
+
             $result = $db->query('SELECT * FROM product WHERE id=' . $id);
             $result->setFetchMode(PDO::FETCH_ASSOC);
 
             return $result->fetch();
         }
     }
-    
+
     /**
      * Returns total products
      */
@@ -95,59 +95,17 @@ class Product
         $db = Db::getConnection();
 
         $result = $db->query('SELECT count(id) AS count FROM product '
-                . 'WHERE status="1" AND category_id ="'.$categoryId.'"');
+            . 'WHERE status="1" AND category_id ="' . $categoryId . '"');
         //Определяет, что метод fetch должен возвратить каждую строку как ассоциативный массив,
         //имена ключей массива будут соответствовать именам столбцов в наборе результата.
         $result->setFetchMode(PDO::FETCH_ASSOC);
         $row = $result->fetch();
 
         return $row['count'];
+
+
     }
 
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     
     /**
      * Returns an array of recommended products
@@ -175,4 +133,22 @@ class Product
         return $productsList;
     }
 
+    public static function getProductByIds($productsIds)
+    {
+        $db = Db::getConnection();
+        $products = array();
+        $productsIdsNew = implode(",", $productsIds);
+        $result = $db->query("SELECT * FROM product WHERE status = '1' AND id in ($productsIdsNew)");
+        $result->setFetchMode(PDO::FETCH_ASSOC);
+
+        $i = 0;
+        while ($row = $result->fetch()) {
+            $products[$i]['id'] = $row['id'];
+            $products[$i]['code'] = $row['code'];
+            $products[$i]['name'] = $row['name'];
+            $products[$i]['price'] = $row['price'];
+            $i++;
+        }
+        return $products;
+    }
 }
