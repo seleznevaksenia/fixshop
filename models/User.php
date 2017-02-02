@@ -29,6 +29,15 @@ class User
         }
         return false;
     }
+
+    public static function checkTel($phoneNumber)
+    {
+        //if (preg_match("/+380\(\d{2}\)\d{3}-\d{2}-\d{2}/", $phoneNumber)) {
+        if (preg_match("/\d{12}/", $phoneNumber)) {
+            return true;
+        }
+        return false;
+    }
     
     /**
      * Проверяет имя: не меньше, чем 6 символов
