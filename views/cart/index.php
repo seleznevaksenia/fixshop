@@ -34,6 +34,7 @@
                             <th>Название</th>
                             <th>Цена</th>
                             <th>Количество</th>
+                            <th>Удалить</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -45,10 +46,12 @@
                             <td><?php echo $product['name']; ?></td>
                             <td><?php echo $product['price']; ?></td>
                             <td><?php echo $productsInCarts[$product['id']]; ?></td>
+                            <td><a href="/cart/delete/<?php echo $product['id']; ?>/" class="btn btn-default">x</a></td>
                         </tr>
                                 <?php endforeach; ?>
                                 <td><?php echo $totalPrice; ?></td>
                             <?php else: ?>
+                                <td>-</td>
                                 <td>-</td>
                                 <td>-</td>
                                 <td>-</td>
@@ -58,7 +61,7 @@
                         </tr>
                         </tbody>
                     </table>
-
+                    <a href="/cart/checkout/" class="btn btn-default"><i class="fa fa-shopping-cart"></i>Оформить заказ</a>
 
                 </div><!--features_items-->
 
