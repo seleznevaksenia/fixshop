@@ -2,12 +2,11 @@
     <div class="footer-bottom">
         <div class="container">
             <div class="row">
-                <p id ="copy" class="pull-left"></p>
+                <p id="copy" class="pull-left"></p>
             </div>
         </div>
     </div>
 </footer><!--/Footer-->
-
 
 
 <script src="/template/js/jquery.js"></script>
@@ -17,10 +16,6 @@
 <script src="/template/js/jquery.prettyPhoto.js"></script>
 <script src="/template/js/main.js"></script>
 
-<!--/Слайдер
-<script src="https://code.jquery.com/jquery-2.2.0.min.js" type="text/javascript"></script>
-<script type="text/javascript" src="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick.min.js"></script>
-<script type="text/javascript" src="/template/js/slick.js"> </script>-->
 
 <script>
     $(document).ready(function () {

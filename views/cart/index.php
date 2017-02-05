@@ -38,7 +38,6 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr>
                             <?php if ($productsInCarts): ?>
                                 <?php foreach ($products as $product): ?>
                         <tr>

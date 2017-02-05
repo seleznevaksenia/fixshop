@@ -9,8 +9,8 @@ class CatalogController
         $categories = array();
         $categories = Category::getCategoriesList();
 
-        $latestProducts = array();
-        $latestProducts = Product::getLatestProducts(12);
+        $catalogProducts = array();
+        $catalogProducts = Product::getProductsList();
 
         require_once(ROOT . '/views/catalog/index.php');
 

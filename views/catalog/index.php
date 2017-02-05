@@ -24,9 +24,9 @@
 
             <div class="col-sm-9 padding-right">
                 <div class="features_items"><!--features_items-->
-                    <h2 class="title text-center">Последние товары</h2>
-                    
-                    <?php foreach ($latestProducts as $product): ?>
+                    <h2 class="title text-center">Все товары</h2>
+
+                    <?php foreach ($catalogProducts as $product): ?>
                         <div class="col-sm-4">
                             <a href="/product/<?php echo $product['id'];?>">
                                 <div class="product-image-wrapper">
