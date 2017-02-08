@@ -14,7 +14,7 @@
         <div class="col-sm-4  padding-right">
             <h4>Добавить новый товар</h4>
 
-            <form method="post">
+            <form method="post" enctype="multipart/form-data">
                 <p>Название товара</p>
                 <input type="text" name="name" value=""/>
                 </br></br>
@@ -36,6 +36,7 @@
                 <input type="text" name="brand" value=""/>
                 </br></br>
                 <p>Изображение товара</p>
+
                 <input type="file" name="image"/>
                 </br></br>
                 <p>Детальное описание</p>

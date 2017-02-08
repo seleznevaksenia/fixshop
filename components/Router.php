@@ -25,7 +25,6 @@ class Router
     {
         // Получить строку запроса
         $uri = $this->getURI();
-
         // Проверить наличие такого запроса в routes.php
         foreach ($this->routes as $uriPattern => $path) {
 
@@ -43,7 +42,6 @@ class Router
                 $controllerName = ucfirst($controllerName);
 
                 $actionName = 'action' . ucfirst(array_shift($segments));
-                             
                 $parameters = $segments;
                 
                 // Подключить файл класса-контроллера

@@ -35,6 +35,7 @@
                 <input type="text" name="brand" value="<?php echo $product['brand']; ?>"/>
                 </br></br>
                 <p>Изображение товара</p>
+                <img src="<?php echo Product::getImage($product['id']) ?>" width="200" alt="">
                 <input type="file" name="image"/>
                 </br></br>
                 <p>Детальное описание</p>

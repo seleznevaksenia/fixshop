@@ -225,4 +225,16 @@ class Product
         return $result->execute();
     }
 
+    public static function getImage($id)
+    {
+
+        $noImage = 'no-image.jpg';
+        $path = '/upload/images/products/';
+        $pathToProductsImage = $path . $id . '.jpg';
+        if (file_exists($_SERVER['DOCUMENT_ROOT'] . $pathToProductsImage)) {
+
+            return $pathToProductsImage;
+        }
+        return $path . $noImage;
+    }
 }

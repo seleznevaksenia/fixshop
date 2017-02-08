@@ -3,7 +3,7 @@
 <div class="container">
     <br class="row">
     </br>
-    <a href="/admin/сategory/create/" class="btn btn-default"><i class="fa fa-plus">Добавить категорию</i></a>
+    <a href="/admin/category/create" class="btn btn-default"><i class="fa fa-plus">Добавить категорию</i></a>
     <h5>Список категорий</h5>
     <table class="table">
         <thead>
@@ -20,7 +20,7 @@
         <tbody>
         <tr>
 
-            <?php foreach ($categorytList as $category): ?>
+            <?php foreach ($categoriesList as $category): ?>
             <td><?php echo $category['id']; ?></td>
             <td><?php echo $category['name']; ?></td>
             <td><?php echo $category['sort_order']; ?></td>

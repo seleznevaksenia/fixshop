@@ -51,8 +51,14 @@ class AdminProductController extends AdminBase
             }
             if ($erorrs == false) {
                 $id = Product::createProduct($options);
+                if ($id) {
+                    // Проверим, загружалось ли через форму изображение
+                    if (is_uploaded_file($_FILES["image"]["tmp_name"])) {
+                        // Если загружалось, переместим его в нужную папке, дадим новое имя
+                        move_uploaded_file($_FILES["image"]["tmp_name"], $_SERVER['DOCUMENT_ROOT'] . "/upload/images/products/{$id}.jpg");
+                    }
+                }
             }
-
             header('Location:/admin/product');
         }
         require_once(ROOT . '/views/admin_product/create.php');
@@ -79,7 +85,9 @@ class AdminProductController extends AdminBase
             $options['status'] = $_POST['status'];
 
             if (Product::updateProductById($id, $options)) {
-
+                if (is_uploaded_file($_FILES['image']['tmp_name'])) {
+                    move_uploaded_file($_FILES['image']['tmp_name'], $_SERVER['DOCUMENT_ROOT'] . 'upload/images/products/{$id}.jpg');
+                }
             }
 
             header('Location:/admin/product');

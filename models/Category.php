@@ -52,7 +52,8 @@ class Category
     public static function deleteCategoryById($id)
     {
         $db = Db::getConnection();
-        $sql = "DELETE FROM product WHERE id = :id";
+
+        $sql = "DELETE FROM category WHERE id = :id";
 
         $result = $db->prepare($sql);
         $result->bindParam(':id', $id, PDO::PARAM_STR);
@@ -63,21 +64,12 @@ class Category
     {
         $db = Db::getConnection();
 
-        $sql = "INSERT into product (name,code,price,category_id,brand,availability,description,is_new,is_recommended,status ) VALUES (:name,:code,:price,:category_id,:brand,:availability,:description,:is_new,:is_recommended,:status)";
+        $sql = "INSERT into category (name,sort_order,status) VALUES (:name,:sort_order,:status)";
 
         $result = $db->prepare($sql);
-        $result->bindParam(':name', $options['name'], PDO::PARAM_STR);
-        $result->bindParam(':code', $options['code'], PDO::PARAM_STR);
-        $result->bindParam(':price', $options['price'], PDO::PARAM_STR);
-        $result->bindParam(':category_id', $options['category_id'], PDO::PARAM_STR);
-        $result->bindParam(':brand', $options['brand'], PDO::PARAM_STR);
-        $result->bindParam(':availability', $options['availability'], PDO::PARAM_STR);
-        $result->bindParam(':description', $options['description'], PDO::PARAM_STR);
-        $result->bindParam(':is_new', $options['is_new'], PDO::PARAM_STR);
-        $result->bindParam(':is_recommended', $options['is_recommended'], PDO::PARAM_STR);
-        $result->bindParam(':status', $options['status'], PDO::PARAM_STR);
-
-
+        $result->bindParam(':name', $name, PDO::PARAM_STR);
+        $result->bindParam(':sort_order', $sortOrder, PDO::PARAM_STR);
+        $result->bindParam(':status', $status, PDO::PARAM_STR);
         if ($result->execute()) {
             return $db->lastInsertId();
         }
@@ -87,21 +79,28 @@ class Category
     {
         $db = Db::getConnection();
 
-        $sql = "UPDATE product SET name = :name,code = :code,price = :price ,category_id = :category_id,brand = :brand,availability = :availability, description = :description,is_new = :is_new,is_recommended = :is_recommended,status = :status WHERE id = :id";
+        $sql = "UPDATE category SET name = :name,sort_order = :sort_order,status = :status  WHERE id = :id";
 
         $result = $db->prepare($sql);
-        $result->bindParam(':name', $options['name'], PDO::PARAM_STR);
-        $result->bindParam(':code', $options['code'], PDO::PARAM_STR);
-        $result->bindParam(':price', $options['price'], PDO::PARAM_STR);
-        $result->bindParam(':category_id', $options['category_id'], PDO::PARAM_STR);
-        $result->bindParam(':brand', $options['brand'], PDO::PARAM_STR);
-        $result->bindParam(':availability', $options['availability'], PDO::PARAM_STR);
-        $result->bindParam(':description', $options['description'], PDO::PARAM_STR);
-        $result->bindParam(':is_new', $options['is_new'], PDO::PARAM_STR);
-        $result->bindParam(':is_recommended', $options['is_recommended'], PDO::PARAM_STR);
-        $result->bindParam(':status', $options['status'], PDO::PARAM_STR);
+        $result->bindParam(':name', $name, PDO::PARAM_STR);
+        $result->bindParam(':sort_order', $sortOrder, PDO::PARAM_STR);
+        $result->bindParam(':status', $status, PDO::PARAM_STR);
         $result->bindParam(':id', $id, PDO::PARAM_STR);
 
         return $result->execute();
+    }
+
+    public static function getCategoryById($id)
+    {
+        $id = intval($id);
+
+        if ($id) {
+            $db = Db::getConnection();
+
+            $result = $db->query('SELECT * FROM category WHERE id=' . $id);
+            $result->setFetchMode(PDO::FETCH_ASSOC);
+
+            return $result->fetch();
+        }
     }
 }
