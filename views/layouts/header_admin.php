@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>Панель администратора</title>
+    <title>Admin panel</title>
     <link href="/template/css/bootstrap.min.css" rel="stylesheet">
     <link href="/template/css/font-awesome.min.css" rel="stylesheet">
     <link href="/template/css/prettyPhoto.css" rel="stylesheet">
@@ -39,14 +39,14 @@
                 <div class="col-sm-6">
                     <div class="contactinfo">
                         <ul class="nav nav-pills">
-                            <li><a href="/admin/"><i class="fa fa-edit"></i>Панель администратора</a></li>
+                            <li><a href="/admin/"><i class="fa fa-edit"></i>Admin panel</a></li>
                         </ul>
                     </div>
                 </div>
                 <div class="col-sm-6">
                     <div class="social-icons pull-right">
                         <ul class="nav navbar-nav">
-                            <li><a href="/"><i class="fa fa-sign-out"></i>На сайт</a></li>
+                            <li><a href="/"><i class="fa fa-sign-out"></i>To site</a></li>
                         </ul>
                     </div>
                 </div>

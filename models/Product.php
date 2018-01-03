@@ -17,7 +17,7 @@ class Product
         $db = Db::getConnection();
         $productsList = array();
 
-        $result = $db->query('SELECT id, name, price, image, is_new FROM product '
+        $result = $db->query('SELECT id, name, price, is_new FROM product '
             . 'WHERE status = "1"'
             . 'ORDER BY id DESC '
             . 'LIMIT ' . $count
@@ -27,7 +27,7 @@ class Product
         while ($row = $result->fetch()) {
             $productsList[$i]['id'] = $row['id'];
             $productsList[$i]['name'] = $row['name'];
-            $productsList[$i]['image'] = $row['image'];
+            $productsList[$i]['image'] = '/template/images/'.$row['id'].'.jpg';
             $productsList[$i]['price'] = $row['price'];
             $productsList[$i]['is_new'] = $row['is_new'];
             $i++;
@@ -48,7 +48,7 @@ class Product
 
             $db = Db::getConnection();
             $products = array();
-            $result = $db->query("SELECT id, name, price, image, is_new FROM product "
+            $result = $db->query("SELECT id, name, price, is_new FROM product "
                 . "WHERE status = '1' AND category_id = '$categoryId' "
                 . "ORDER BY id ASC "
                 . "LIMIT " . self::SHOW_BY_DEFAULT
@@ -58,7 +58,7 @@ class Product
             while ($row = $result->fetch()) {
                 $products[$i]['id'] = $row['id'];
                 $products[$i]['name'] = $row['name'];
-                $products[$i]['image'] = $row['image'];
+                $products[$i]['image'] = '/template/images/'.$row['id'].'.jpg';
                 $products[$i]['price'] = $row['price'];
                 $products[$i]['is_new'] = $row['is_new'];
                 $i++;
@@ -116,13 +116,13 @@ class Product
 
         $productsList = array();
 
-        $result = $db->query('SELECT id, name, price, image, is_new FROM product WHERE status = "1" AND is_recommended = "1" ORDER BY id DESC');
+        $result = $db->query('SELECT id, name, price, is_new FROM product WHERE status = "1" AND is_recommended = "1" ORDER BY id DESC');
 
         $i = 0;
         while ($row = $result->fetch()) {
             $productsList[$i]['id'] = $row['id'];
             $productsList[$i]['name'] = $row['name'];
-            $productsList[$i]['image'] = $row['image'];
+            $productsList[$i]['image'] = '/template/images/'.$row['id'].'.jpg';
             $productsList[$i]['price'] = $row['price'];
             $productsList[$i]['is_new'] = $row['is_new'];
             $i++;
@@ -154,7 +154,7 @@ class Product
         // Соединение с БД
         $db = Db::getConnection();
         // Получение и возврат результатов
-        $result = $db->query('SELECT id, name, price, code, image, is_new FROM product ORDER BY id ASC');
+        $result = $db->query('SELECT id, name, price, code, is_new FROM product ORDER BY id ASC');
         $productsList = array();
         $i = 0;
         while ($row = $result->fetch()) {
@@ -162,7 +162,7 @@ class Product
             $productsList[$i]['name'] = $row['name'];
             $productsList[$i]['code'] = $row['code'];
             $productsList[$i]['price'] = $row['price'];
-            $productsList[$i]['image'] = $row['image'];
+            $productsList[$i]['image'] = '/template/images/'.$row['id'].'.jpg';
             $productsList[$i]['is_new'] = $row['is_new'];
             $i++;
         }

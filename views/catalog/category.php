@@ -25,8 +25,8 @@
             </div>
 
             <div class="col-sm-9 padding-right">
+                <h2 class="title text-center">Last products</h2>
                 <div class="features_items"><!--features_items-->
-                    <h2 class="title text-center">Последние товары</h2>
 
                     <?php foreach ($categoryProducts as $product): ?>
                         <div class="col-sm-4">
@@ -42,8 +42,7 @@
                                                 </a>
                                             </p>
                                             <a href="#" data-id="<?php echo $product['id']; ?>"
-                                               class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>В
-                                                корзину</a>
+                                               class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add To Cart</a>
                                         </div>
                                         <?php if ($product['is_new']): ?>
                                             <img src="/template/images/home/new.png" class="new" alt="" />

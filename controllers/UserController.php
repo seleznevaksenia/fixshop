@@ -32,7 +32,6 @@ class UserController
             if (User::checkEmailExists($email)) {
                 $errors[] = 'Такой email уже используется';
             }
-            //echo print_r($errors);
             if ($errors == false) {
                 $result = User::register($name, $email, $password);
                 if($result){

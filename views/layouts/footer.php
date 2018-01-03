@@ -35,7 +35,6 @@
     });
     var myDate = new Date();
     document.getElementById("copy").innerHTML = "Copyright © " + myDate.getUTCFullYear();
-    document.getElementById("copy").innerHTML = "Copyright © " + myDate.getUTCFullYear();
 </script>
 
 </body>

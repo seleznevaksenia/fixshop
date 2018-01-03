@@ -92,17 +92,17 @@
                             <div class="shop-menu pull-right">
                                 <ul class="nav navbar-nav">
                                     <?php if(User::isGuest()):?>
-                                        <li><a href="/cart/"><i class="fa fa-shopping-cart"></i> Корзина
+                                        <li><a href="/cart/"><i class="fa fa-shopping-cart"></i> Cart
                                                 <span id="cart-count">(<?php echo Cart::countItems(); ?>)</span></a>
                                         </li>
-                                    <li><a href="/user/login/"><i class="fa fa-lock"></i> Вход</a></li>
-                                        <li><a href="/user/register/"><i class="fa fa-lock"></i>Регистрация</a></li>
+                                    <li><a href="/user/login/"><i class="fa fa-lock"></i>Login</a></li>
+                                        <li><a href="/user/register/"><i class="fa fa-lock"></i>Registration</a></li>
                                     <?php else:?>
-                                        <li><a href="/cart/"><i class="fa fa-shopping-cart"></i> Корзина
+                                        <li><a href="/cart/"><i class="fa fa-shopping-cart"></i> Cart
                                                 <span id="cart-count">(<?php echo Cart::countItems(); ?>)</span></a>
                                         </li>
-                                    <li><a href="/cabinet/"><i class="fa fa-user"></i> Аккаунт</a></li>
-                                    <li><a href="/user/logout/"><i class="fa fa-unlock"></i> Выход</a></li>
+                                    <li><a href="/cabinet/"><i class="fa fa-user"></i> Account</a></li>
+                                    <li><a href="/user/logout/"><i class="fa fa-unlock"></i> Logout</a></li>
                                     <?php endif;?>
                                 </ul>
                             </div>
@@ -125,16 +125,16 @@
                             </div>
                             <div class="mainmenu pull-left">
                                 <ul class="nav navbar-nav collapse navbar-collapse">
-                                    <li><a href="/">Главная</a></li>
-                                    <li class="dropdown"><a href="#">Магазин<i class="fa fa-angle-down"></i></a>
+                                    <li><a href="/">Main</a></li>
+                                    <li class="dropdown"><a href="#">Shop<i class="fa fa-angle-down"></i></a>
                                         <ul role="menu" class="sub-menu">
-                                            <li><a href="/catalog/">Каталог товаров</a></li>
-                                            <li><a href="/cart/">Корзина</a></li> 
+                                            <li><a href="/catalog/">Catalog</a></li>
+                                            <li><a href="/cart/">Cart</a></li>
                                         </ul>
                                     </li> 
-                                    <li><a href="/blog/">Блог</a></li> 
-                                    <li><a href="/about/">О магазине</a></li>
-                                    <li><a href="/contact/">Контакты</a></li>
+                                    <li><a href="/blog/">Blog</a></li>
+                                    <li><a href="/about/">About Us</a></li>
+                                    <li><a href="/contact/">Contact Us</a></li>
                                 </ul>
                             </div>
                         </div>

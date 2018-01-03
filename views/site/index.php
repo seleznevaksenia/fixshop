@@ -5,7 +5,7 @@
         <div class="row">
             <div class="col-sm-3">
                 <div class="left-sidebar">
-                    <h2>Каталог</h2>
+                    <h2>Catalog</h2>
                     <div class="panel-group category-products">
                         <?php foreach ($categories as $categoryItem): ?>
                             <div class="panel panel-default">
@@ -23,8 +23,8 @@
             </div>
 
             <div class="col-sm-9 padding-right">
+                <h2 class="title text-center">Latest products</h2>
                 <div class="features_items"><!--features_items-->
-                    <h2 class="title text-center">Последние товары</h2>
 
                     <?php foreach ($latestProducts as $product): ?>
                         <div class="col-sm-4">
@@ -40,8 +40,7 @@
                                                 </a>
                                             </p>
                                             <a href="#" data-id="<?php echo $product['id']; ?>"
-                                               class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>В
-                                                корзину</a>
+                                               class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to Cart</a>
                                         </div>
                                         <?php if ($product['is_new']): ?>
                                             <img src="/template/images/home/new.png" class="new" alt="" />
@@ -57,7 +56,7 @@
             </div>
         </div>
                 <div class="recommended_items"><!--recommended_items-->
-                    <h2 class="title text-center">Рекомендуемые товары</h2>
+                    <h2 class="title text-center">Recommended products</h2>
                 </div><!--/recommended_items-->
 
 
@@ -79,8 +78,6 @@
                         <div class="carousel-caption car_heith">
                             <div class="row">
                                 <div class="col-md-12">
-
-
                                     <div class="col-md-4">2345</div>
                                     <div class="col-md-4">456</div>
                                     <div class="col-md-4">678</div>

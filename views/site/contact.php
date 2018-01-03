@@ -7,7 +7,7 @@
                 <div class="col-sm-4 col-sm-offset-4 padding-right">
 
                     <?php if ($result): ?>
-                        <p>Сообщение отправлено на указанный email!</p>
+                        <p>Message has been sent to email!</p>
                     <?php else: ?>
                         <?php if (isset($errors) && is_array($errors)): ?>
                             <ul>
@@ -24,10 +24,10 @@
                                 <p>Ваша почта</p>
                                 <input type="email" name="userEmail" placeholder="E-mail"
                                        value="<?php echo $userEmail; ?>"/>
-                                <p>Сообщение</p>
-                                <input type="text" name="userText" placeholder="Текст сообщения"
+                                <p>Message</p>
+                                <input type="text" name="userText" placeholder="Message"
                                        value="<?php echo $userText; ?>"/>
-                                <input type="submit" name="submit" class="btn btn-default" value="Отправить"/>
+                                <input type="submit" name="submit" class="btn btn-default" value="Send"/>
                             </form>
                         </div><!--/sign up form-->
 

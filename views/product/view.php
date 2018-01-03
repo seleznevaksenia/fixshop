@@ -27,33 +27,33 @@
                     <div class="row">
                         <div class="col-sm-5">
                             <div class="view-product">
-                                <img src="<?php echo $product['image'];?>" alt="" />
+                                <img src="<?php echo '/template/images/'.$product['id'].'.jpg';?>" alt="" />
                             </div>
                         </div>
                         <div class="col-sm-7">
                             <div class="product-information"><!--/product-information-->
                                 <img src="/template/images/product-details/new.jpg" class="newarrival" alt="" />
                                 <h2><?php echo $product['name'];?></h2>
-                                <p>Код товара: <?php echo $product['code'];?></p>
+                                <p>Product code: <?php echo $product['code'];?></p>
                                 <span>
                                     <span>US $<?php echo $product['price'];?></span>
-                                    <label>Количество:</label>
+                                    <label>QTY:</label>
                                     <input type="text" value="3" />
                                     <button type="button" data-id="<?php echo $product['id']; ?>"
                                             class="btn btn-default cart add-to-cart">
                                         <i class="fa fa-shopping-cart"></i>
-                                        В корзину
+                                        Add To Cart
                                     </button>
                                 </span>
-                                <p><b>Наличие:</b> На складе</p>
-                                <p><b>Состояние:</b> Новое</p>
-                                <p><b>Производитель:</b> D&amp;G</p>
+                                <p><b>Availability:</b><?php echo $product['availability']; ?></p>
+                                <p><b>Condition:</b> <?php echo $product['is_new']; ?></p>
+                                <p><b>Brand:</b><?php echo $product['brand']; ?></p>
                             </div><!--/product-information-->
                         </div>
                     </div>
                     <div class="row">                                
                         <div class="col-sm-12">
-                            <h5>Описание товара</h5>
+                            <h5>Description</h5>
                             <?php echo $product['description'];?>
                         </div>
                     </div>
