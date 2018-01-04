@@ -16,7 +16,7 @@ class Cart
         }
     }
 
-    public static function addProduct($id)
+    public static function addProduct($id,$qty = 1)
     {
         $id = intval($id);
         $productsInCart = array();
@@ -24,9 +24,9 @@ class Cart
             $productsInCart = $_SESSION['products'];
         }
         if (array_key_exists($id, $productsInCart)) {
-            $productsInCart[$id]++;
+            $productsInCart[$id] = $productsInCart[$id] + $qty;
         } else {
-            $productsInCart[$id] = 1;
+            $productsInCart[$id] = $qty;
         }
         $_SESSION['products'] = $productsInCart;
 

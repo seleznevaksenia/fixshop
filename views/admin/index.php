@@ -5,22 +5,22 @@
 
         <br/>
 
-        <h4>Добрый день, администратор!</h4>
+        <h4>Hello, admin!</h4>
 
         <br/>
 
-        <p>Вам доступны такие возможности:</p>
+        <p>You have the following options:</p>
 
         <br/>
 
         <ul>
-            <li><a href="/admin/product">Управление товарами</a></li>
-            <li><a href="/admin/category">Управление категориями</a></li>
-            <li><a href="/admin/order">Управление заказами</a></li>
+            <li><a href="/admin/product">Product Management</a></li>
+            <li><a href="/admin/category">Category Management</a></li>
+            <li><a href="/admin/order">Order Management</a></li>
         </ul>
 
     </div>
 </div>
 
-<?php include ROOT . '/views/layouts/footer_admin.php'; ?>
+<?php include ROOT . '/views/layouts/footer.php'; ?>
 

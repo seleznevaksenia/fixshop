@@ -3,16 +3,16 @@
 <div class="container">
     <br class="row">
     </br>
-    <a href="/admin/product/create/" class="btn btn-default"><i class="fa fa-plus">Добавить товар</i></a>
-    <h5>Список товаров</h5>
+    <a href="/admin/product/create/" class="btn btn-default"><i class="fa fa-plus">Add product</i></a>
+    <h5>Product List</h5>
     <table class="table">
         <thead>
         <tr>
 
-            <th>ID товара</th>
-            <th>Артикул</th>
-            <th>Название товара</th>
-            <th>Цена</th>
+            <th>ID product</th>
+            <th>Code</th>
+            <th>Name</th>
+            <th>Price</th>
             <th></th>
             <th></th>
         </tr>
@@ -36,5 +36,5 @@
 </div>
 </div>
 
-<?php include ROOT . '/views/layouts/footer_admin.php'; ?>
+<?php include ROOT . '/views/layouts/footer.php'; ?>
 

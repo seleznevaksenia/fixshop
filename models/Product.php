@@ -127,7 +127,7 @@ class Product
 
     }
 
-    
+
     /**
      * Returns an array of recommended products
      */
@@ -173,13 +173,13 @@ class Product
 
     public static function getProductsList($page = 1)
     {
-       $page = intval($page);
+        $page = intval($page);
         $offset = ($page - 1) * self::SHOW_BY_DEFAULT;
         // Соединение с БД
         $db = Db::getConnection();
         // Получение и возврат результатов
         $result = $db->query('SELECT id, name,image, price, code, is_new FROM product ORDER BY id ASC LIMIT ' . self::SHOW_BY_DEFAULT
-                . ' OFFSET ' . $offset);
+            . ' OFFSET ' . $offset);
         $productsList = array();
         $i = 0;
         while ($row = $result->fetch()) {
@@ -265,52 +265,44 @@ class Product
         }
         return $path . $noImage;
     }
-    public static function importProductFromFile(){
+
+    /*upload products from file go to route 'admin/import' */
+    public static function importProductFromFile()
+    {
         $file_handle = fopen("upload/content.csv", "r");
         $recommended = 0;
         $new = 0;
         $i = 0;
-        $category = [1,2,3,4];
+        $category = [1, 2, 3, 4];
         while (!feof($file_handle)) {
-                if($i%10 == 0){
-                    $recommended = 1;
-                }
-                else{
-                    $recommended = 0;
-                }
-                if($i%20 == 0){
-                    $new = 1;
-                }
-                else{
-                    $new = 0;
-                }
-                $line = fgets($file_handle);
-            if($i != 0){
-                try{
+            $recommended = ($i % 10 == 0) ? 1 : 0;
+            $new = ($i % 20 == 0) ? 1 : 0;
+            $line = fgets($file_handle);
+            if ($i != 0) {
+                try {
                     $options = [];
                     $pieces = explode(",", $line);
-                    $options['image'] = trim($pieces[0],'"');
+                    $options['image'] = trim($pieces[0], '"');
                     $options['code'] = $pieces[1];
                     $options['upc'] = $pieces[2];
                     $options['price'] = $pieces[3];
-                    $options['name'] = trim($pieces[4],'"');
+                    $options['name'] = trim($pieces[4], '"');
 
-                    $options['category_id'] = array_rand($category,1)+1;
+                    $options['category_id'] = array_rand($category, 1) + 1;
                     $options['availability'] = 1;
                     $options['is_new'] = $new;
                     $options['is_recommended'] = $recommended;
                     $options['status'] = 1;
                     $id = Product::createProduct($options);
                     echo $id;
-                }
-                catch (Exception $e){
-                    echo 'Caught exception: ',  $e->getMessage(), "\n";
+                } catch (Exception $e) {
+                    echo 'Caught exception: ', $e->getMessage(), "\n";
                 }
 
             }
 
             $i++;
-            if($i == 10000) break;
+            if ($i == 10000) break;
         }
         fclose($file_handle);
     }

@@ -13,12 +13,12 @@
                         </ul>
                     <?php endif; ?>
 
-                    <div class="signup-form"><!--sign up form-->
-                        <h2>Вход на сайт</h2>
+                    <div class="login-form"><!--sign up form-->
+                        <h2>Enter the site</h2>
                         <form action="#" method="post">
                             <input type="email" name="email" placeholder="E-mail" value="<?php echo $email; ?>"/>
-                            <input type="password" name="password" placeholder="Пароль" value="<?php echo $password; ?>"/>
-                            <input type="submit" name="submit" class="btn btn-default" value="Авторизация" />
+                            <input type="password" name="password" placeholder="password" value="<?php echo $password; ?>"/>
+                            <input type="submit" name="submit" class="btn btn-default" value="Authorization" />
                         </form>
                     </div><!--/sign up form-->
                 <br/>

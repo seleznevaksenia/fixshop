@@ -5,34 +5,34 @@
         </br></br>
         <div class="breadcrumbs">
             <ol class="breadcrumb">
-                <li><a href="/admin">Админпанель</a></li>
-                <li><a href="/admin/category">Управление категориями</a></li>
-                <li class="active">Добавить категорию</li>
+                <li><a href="/admin">Admin panel</a></li>
+                <li><a href="/admin/category">Category Management</a></li>
+                <li class="active">Add Category</li>
             </ol>
         </div>
 
         <div class="col-sm-4  padding-right">
-            <h4>Добавить новый товар</h4>
+            <h4>Add new Category</h4>
 
             <form method="post">
-                <p>Название</p>
+                <p>Name</p>
                 <input type="text" name="name" value=""/>
                 </br></br>
-                <p>Порядковый номер</p>
+                <p>Number by order</p>
                 <input type="text" name="sort_order" value=""/>
                 </br></br>
-                <p>Статус</p>
+                <p>Status</p>
                 <select name="status">
-                    <option value="1" selected="selected">Отображается</option>
-                    <option value="0">Скрыт</option>
+                    <option value="1" selected="selected">Show</option>
+                    <option value="0">Hide</option>
                 </select>
                 </br></br>
-                <input type="submit" name="submit" class="btn btn-default" value="Сохранить"/>
+                <input type="submit" name="submit" class="btn btn-default" value="Save"/>
             </form>
             </br>
         </div>
     </div>
 </div>
 
-<?php include ROOT . '/views/layouts/footer_admin.php'; ?>
+<?php include ROOT . '/views/layouts/footer.php'; ?>
 

@@ -5,20 +5,20 @@
     </br>
     <div class="breadcrumbs">
         <ol class="breadcrumb">
-            <li><a href="/admin">Админпанель</a></li>
-            <li><a href="/admin/product">Управление заказами</a></li>
-            <li class="active">Удалить заказ</li>
+            <li><a href="/admin">Admin panel</a></li>
+            <li><a href="/admin/product">Order Management</a></li>
+            <li class="active">Delete Order</li>
         </ol>
     </div>
     </br>
-    <h5>Удалить заказ #<?php echo $id; ?></h5>
+    <h5>Delete Order #<?php echo $id; ?></h5>
     </br>
-    <h4>Вы действительно хотите удалить этот заказ?</h4>
+    <h4>Are you really want to delete this order?</h4>
     <form action="#" method="post">
-        <input type="submit" name="submit" class="btn btn-default" value="Удалить"/>
+        <input type="submit" name="submit" class="btn btn-default" value="Delete"/>
     </form>
     </br>
 </div>
 
-<?php include ROOT . '/views/layouts/footer_admin.php'; ?>
+<?php include ROOT . '/views/layouts/footer.php'; ?>
 

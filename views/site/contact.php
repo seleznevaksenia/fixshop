@@ -7,7 +7,7 @@
                 <div class="col-sm-4 col-sm-offset-4 padding-right">
 
                     <?php if ($result): ?>
-                        <p>Message has been sent to email!</p>
+                        <p>Message has been sent!</p>
                     <?php else: ?>
                         <?php if (isset($errors) && is_array($errors)): ?>
                             <ul>

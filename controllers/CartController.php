@@ -19,7 +19,10 @@ class CartController
     }
     public function actionAddAjax($id)
     {
-        echo Cart::addProduct($id);
+        if (isset($_POST['qty'])) {
+            $qty = $_POST['qty'];
+        }
+        echo Cart::addProduct($id,$qty);
         return true;
     }
 

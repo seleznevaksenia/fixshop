@@ -3,16 +3,16 @@
 <div class="container">
     <br class="row">
     </br>
-    <a href="/admin/category/create" class="btn btn-default"><i class="fa fa-plus">Добавить категорию</i></a>
-    <h5>Список категорий</h5>
+    <a href="/admin/category/create" class="btn btn-default"><i class="fa fa-plus">Add category</i></a>
+    <h5>Category List</h5>
     <table class="table">
         <thead>
         <tr>
 
-            <th>ID категории</th>
-            <th>Название</th>
-            <th>Порядковый номер</th>
-            <th>Статус</th>
+            <th>ID category</th>
+            <th>Name</th>
+            <th>Number by order</th>
+            <th>Status</th>
             <th></th>
             <th></th>
         </tr>
@@ -36,5 +36,5 @@
 </div>
 </div>
 
-<?php include ROOT . '/views/layouts/footer_admin.php'; ?>
+<?php include ROOT . '/views/layouts/footer.php'; ?>
 

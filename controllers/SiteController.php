@@ -1,8 +1,5 @@
 <?php
 
-//include_once ROOT . '/models/Category.php';
-//include_once ROOT . '/models/Product.php';
-
 class SiteController
 {
 
@@ -27,6 +24,8 @@ class SiteController
         $userEmail = '';
         $userText = '';
         $result = false;
+        $adminEmail = '380992717715@ya.ru';
+
         if (isset($_POST['submit'])) {
             $userEmail = $_POST['userEmail'];
             //echo $userEmail;
@@ -37,9 +36,8 @@ class SiteController
                 $errors[] = 'Неправильный Email';
             }
             if ($errors == false) {
-                $adminEmail = '380992717715@ya.ru';
-                $message = "Текст: {$userText}. От {$userEmail}";
-                $subject = 'Тема письма';
+                $message = "Text: {$userText}. From {$userEmail}";
+                $subject = 'Letter subject';
                 $result = mail($adminEmail, $subject, $message);
                 $result = true;
             }

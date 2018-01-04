@@ -5,26 +5,26 @@
         </br></br>
         <div class="breadcrumbs">
             <ol class="breadcrumb">
-                <li><a href="/admin">Админпанель</a></li>
-                <li><a href="/admin/product">Управление товарами</a></li>
-                <li class="active">Добавить товар</li>
+                <li><a href="/admin">Admin panel</a></li>
+                <li><a href="/admin/product">Product Management</a></li>
+                <li class="active">Add Product</li>
             </ol>
         </div>
 
         <div class="col-sm-4  padding-right">
-            <h4>Добавить новый товар</h4>
+            <h4>Add New Product</h4>
 
             <form method="post" enctype="multipart/form-data">
-                <p>Название товара</p>
+                <p>Title</p>
                 <input type="text" name="name" value=""/>
                 </br></br>
-                <p>Артикул</p>
+                <p>Code</p>
                 <input type="text" name="code" value=""/>
                 </br></br>
-                <p>Цена,$</p>
+                <p>Price,$</p>
                 <input type="number" name="price" value=""/>
                 </br></br>
-                <p>Категория</p>
+                <p>Category</p>
                 <select name="category_id">
                     <option value="" selected="selected"></option>
                     <?php foreach ($categoriesList as $item): ?>
@@ -32,46 +32,46 @@
                     <?php endforeach; ?>
                 </select>
                 </br></br>
-                <p>Производитель</p>
+                <p>Brand</p>
                 <input type="text" name="brand" value=""/>
                 </br></br>
-                <p>Изображение товара</p>
+                <p>Image</p>
 
                 <input type="file" name="image"/>
                 </br></br>
-                <p>Детальное описание</p>
+                <p>Description</p>
                 <textarea name="description"></textarea>
                 </br></br>
-                <p>Наличие на складе</p>
+                <p>Availability</p>
                 <select name="availability">
-                    <option value="1" selected="selected">Да</option>
-                    <option value="0">Нет</option>
+                    <option value="1" selected="selected">Yes</option>
+                    <option value="0">No</option>
                 </select>
                 </br></br>
-                <p>Новинка</p>
+                <p>New</p>
                 <select name="is_new">
-                    <option value="1" selected="selected">Да</option>
-                    <option value="0">Нет</option>
+                    <option value="1" selected="selected">Yes</option>
+                    <option value="0">No</option>
                 </select>
                 </br></br>
-                <p>Рекомендуемые</p>
+                <p>Recommended</p>
                 <select name="is_recommended">
-                    <option value="1" selected="selected">Да</option>
-                    <option value="0">Нет</option>
+                    <option value="1" selected="selected">Yes</option>
+                    <option value="0">No</option>
                 </select>
                 </br></br>
-                <p>Статус</p>
+                <p>Status</p>
                 <select name="status">
-                    <option value="1" selected="selected">Отображается</option>
-                    <option value="0">Скрыт</option>
+                    <option value="1" selected="selected">Show</option>
+                    <option value="0">Hide</option>
                 </select>
                 </br></br>
-                <input type="submit" name="submit" class="btn btn-default" value="Сохранить"/>
+                <input type="submit" name="submit" class="btn btn-default" value="Save"/>
             </form>
             </br>
         </div>
     </div>
 </div>
 
-<?php include ROOT . '/views/layouts/footer_admin.php'; ?>
+<?php include ROOT . '/views/layouts/footer.php'; ?>
 

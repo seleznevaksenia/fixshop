@@ -1,14 +1,11 @@
 /*price range*/
 
-$('#sl2').slider();
-
 var RGBChange = function () {
     $('#RGB').css('background', 'rgb(' + r.getValue() + ',' + g.getValue() + ',' + b.getValue() + ')')
 };
 
-/*scroll to top*/
-
 $(document).ready(function () {
+    /*scroll to top*/
     $(function () {
         $.scrollUp({
             scrollName: 'scrollUp', // Element ID
@@ -27,23 +24,19 @@ $(document).ready(function () {
             zIndex: 2147483647 // Z-Index for the overlay
         });
     });
-
-    $('#myCarousel').carousel({
-        interval: 10000
-    })
-
-    $('.carousel .item').each(function () {
-        var next = $(this).next();
-        if (!next.length) {
-            next = $(this).siblings(':first');
+    //Add To Cart
+    $(".add-to-cart").click(function () {
+        var id = $(this).attr("data-id");
+        var qty = $('.product-information input').val();
+        if(qty === undefined){
+            qty = 1;
         }
-        next.children(':first-child').clone().appendTo($(this));
-
-        if (next.next().length > 0) {
-            next.next().children(':first-child').clone().appendTo($(this));
-        }
-        else {
-            $(this).siblings(':first').children(':first-child').clone().appendTo($(this));
-        }
+        $.post("/cart/addAjax/" + id, {qty:qty}, function (data) {
+            $("#cart-count").html('(' + data + ')');
+        });
+        return false;
     });
+    //Copyright
+    var myDate = new Date();
+    document.getElementById("copy").innerHTML = "Copyright © " + myDate.getUTCFullYear();
 });

@@ -25,14 +25,14 @@ class Order
         // Соединение с БД
         $db = Db::getConnection();
         // Получение и возврат результатов
-        $result = $db->query('SELECT id, user_name, user_phone, order_date, status FROM product_order ORDER BY id ASC');
+        $result = $db->query('SELECT id, user_name, user_phone, date, status FROM product_order ORDER BY id ASC');
         $ordersList = array();
         $i = 0;
         while ($row = $result->fetch()) {
             $ordersList[$i]['id'] = $row['id'];
             $ordersList[$i]['user_name'] = $row['user_name'];
             $ordersList[$i]['user_phone'] = $row['user_phone'];
-            $ordersList[$i]['order_date'] = $row['order_date'];
+            $ordersList[$i]['date'] = $row['date'];
             $ordersList[$i]['status'] = $row['status'];
             $i++;
         }

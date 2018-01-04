@@ -25,7 +25,7 @@
             </div>
 
             <div class="col-sm-9 padding-right">
-                <h2 class="title text-center">Last products</h2>
+                <h2 class="title text-center">Products</h2>
                 <div class="features_items"><!--features_items-->
 
                     <?php foreach ($categoryProducts as $product): ?>
