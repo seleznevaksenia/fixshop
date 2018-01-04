@@ -8,7 +8,7 @@ return array(
     'admin/category/delete/([0-9]+)' => 'adminCategory/delete/$1',
     'admin/category' => 'adminCategory/index',
     //Управление товарами
-    'admin/import' => 'adminProduct/import',
+   /* 'admin/import' => 'adminProduct/import',*/
     'admin/product/create' => 'adminProduct/create',
     'admin/product/update/([0-9]+)' => 'adminProduct/update/$1',
     'admin/product/delete/([0-9]+)' => 'adminProduct/delete/$1',

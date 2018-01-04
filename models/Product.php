@@ -269,7 +269,7 @@ class Product
     /*upload products from file go to route 'admin/import' */
     public static function importProductFromFile()
     {
-        $file_handle = fopen("upload/content.csv", "r");
+        /*$file_handle = fopen("upload/content.csv", "r");
         $recommended = 0;
         $new = 0;
         $i = 0;
@@ -304,7 +304,7 @@ class Product
             $i++;
             if ($i == 10000) break;
         }
-        fclose($file_handle);
+        fclose($file_handle);*/
     }
 
 }
