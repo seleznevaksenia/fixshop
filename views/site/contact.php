@@ -18,10 +18,10 @@
                         <?php endif; ?>
 
                         <div class="signup-form"><!--sign up form-->
-                            <h2>Обратная связь</h2>
-                            <h5>Есть вопрос? Напишите нам!</h5>
+                            <h2>Feedback</h2>
+                            <h5>Have a question? Write to us!</h5>
                             <form action="#" method="post">
-                                <p>Ваша почта</p>
+                                <p>Email</p>
                                 <input type="email" name="userEmail" placeholder="E-mail"
                                        value="<?php echo $userEmail; ?>"/>
                                 <p>Message</p>

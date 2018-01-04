@@ -95,4 +95,10 @@ class AdminProductController extends AdminBase
         require_once(ROOT . '/views/admin_product/update.php');
         return true;
     }
+
+    public function actionImport()
+    {
+        self::checkAdmin();
+        Product::importProductFromFile();
+    }
 }

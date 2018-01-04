@@ -7,15 +7,15 @@
                 <div class="left-sidebar">
 
 
-                <h1>Кабинет пользователя</h1>
+                <h1>User Settings</h1>
                     <h3>Hello,<?php echo $user['user_name'];?></h3>
                 <ul>
-                    <a href="/cabinet/edit"><li>Редактировать данные</li></a>
+                    <a href="/cabinet/edit"><li>Edit</li></a>
                     <a href="/cart/">
-                        <li>Список покупок</li>
+                        <li>Cart</li>
                     </a>
                     <a href="/admin/">
-                        <li>Вход в панель администратора</li>
+                        <li>Admin panel</li>
                     </a>
                 </ul>
                 </div>

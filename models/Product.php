@@ -3,7 +3,7 @@
 class Product
 {
 
-    const SHOW_BY_DEFAULT = 3;
+    const SHOW_BY_DEFAULT = 9;
 
     /**
      * Returns an array of products
@@ -17,7 +17,7 @@ class Product
         $db = Db::getConnection();
         $productsList = array();
 
-        $result = $db->query('SELECT id, name, price, is_new FROM product '
+        $result = $db->query('SELECT id, name, price, image, code, is_new FROM product '
             . 'WHERE status = "1"'
             . 'ORDER BY id DESC '
             . 'LIMIT ' . $count
@@ -27,7 +27,8 @@ class Product
         while ($row = $result->fetch()) {
             $productsList[$i]['id'] = $row['id'];
             $productsList[$i]['name'] = $row['name'];
-            $productsList[$i]['image'] = '/template/images/'.$row['id'].'.jpg';
+            $productsList[$i]['image'] = $row['image'];
+            $productsList[$i]['code'] = $row['code'];
             $productsList[$i]['price'] = $row['price'];
             $productsList[$i]['is_new'] = $row['is_new'];
             $i++;
@@ -48,7 +49,7 @@ class Product
 
             $db = Db::getConnection();
             $products = array();
-            $result = $db->query("SELECT id, name, price, is_new FROM product "
+            $result = $db->query("SELECT id, name,image, price, code, is_new FROM product "
                 . "WHERE status = '1' AND category_id = '$categoryId' "
                 . "ORDER BY id ASC "
                 . "LIMIT " . self::SHOW_BY_DEFAULT
@@ -58,8 +59,9 @@ class Product
             while ($row = $result->fetch()) {
                 $products[$i]['id'] = $row['id'];
                 $products[$i]['name'] = $row['name'];
-                $products[$i]['image'] = '/template/images/'.$row['id'].'.jpg';
+                $products[$i]['image'] = $row['image'];
                 $products[$i]['price'] = $row['price'];
+                $products[$i]['code'] = $row['code'];
                 $products[$i]['is_new'] = $row['is_new'];
                 $i++;
             }
@@ -88,7 +90,7 @@ class Product
     }
 
     /**
-     * Returns total products
+     * Returns total products in Category
      */
     public static function getTotalProductsInCategory($categoryId)
     {
@@ -96,6 +98,25 @@ class Product
 
         $result = $db->query('SELECT count(id) AS count FROM product '
             . 'WHERE status="1" AND category_id ="' . $categoryId . '"');
+        //Определяет, что метод fetch должен возвратить каждую строку как ассоциативный массив,
+        //имена ключей массива будут соответствовать именам столбцов в наборе результата.
+        $result->setFetchMode(PDO::FETCH_ASSOC);
+        $row = $result->fetch();
+
+        return $row['count'];
+
+
+    }
+
+    /**
+     * Returns total products
+     */
+    public static function getTotalProducts()
+    {
+        $db = Db::getConnection();
+
+        $result = $db->query('SELECT count(id) AS count FROM product '
+            . 'WHERE status="1"');
         //Определяет, что метод fetch должен возвратить каждую строку как ассоциативный массив,
         //имена ключей массива будут соответствовать именам столбцов в наборе результата.
         $result->setFetchMode(PDO::FETCH_ASSOC);
@@ -116,13 +137,14 @@ class Product
 
         $productsList = array();
 
-        $result = $db->query('SELECT id, name, price, is_new FROM product WHERE status = "1" AND is_recommended = "1" ORDER BY id DESC');
+        $result = $db->query('SELECT id, name, image, code, price, is_new FROM product WHERE status = "1" AND is_recommended = "1" ORDER BY id DESC');
 
         $i = 0;
         while ($row = $result->fetch()) {
             $productsList[$i]['id'] = $row['id'];
             $productsList[$i]['name'] = $row['name'];
-            $productsList[$i]['image'] = '/template/images/'.$row['id'].'.jpg';
+            $productsList[$i]['image'] = $row['image'];
+            $productsList[$i]['code'] = $row['code'];
             $productsList[$i]['price'] = $row['price'];
             $productsList[$i]['is_new'] = $row['is_new'];
             $i++;
@@ -149,12 +171,15 @@ class Product
         return $products;
     }
 
-    public static function getProductsList()
+    public static function getProductsList($page = 1)
     {
+       $page = intval($page);
+        $offset = ($page - 1) * self::SHOW_BY_DEFAULT;
         // Соединение с БД
         $db = Db::getConnection();
         // Получение и возврат результатов
-        $result = $db->query('SELECT id, name, price, code, is_new FROM product ORDER BY id ASC');
+        $result = $db->query('SELECT id, name,image, price, code, is_new FROM product ORDER BY id ASC LIMIT ' . self::SHOW_BY_DEFAULT
+                . ' OFFSET ' . $offset);
         $productsList = array();
         $i = 0;
         while ($row = $result->fetch()) {
@@ -162,7 +187,7 @@ class Product
             $productsList[$i]['name'] = $row['name'];
             $productsList[$i]['code'] = $row['code'];
             $productsList[$i]['price'] = $row['price'];
-            $productsList[$i]['image'] = '/template/images/'.$row['id'].'.jpg';
+            $productsList[$i]['image'] = $row['image'];
             $productsList[$i]['is_new'] = $row['is_new'];
             $i++;
         }
@@ -183,16 +208,19 @@ class Product
     {
         $db = Db::getConnection();
 
-        $sql = "INSERT into product (name,code,price,category_id,brand,availability,description,is_new,is_recommended,status ) VALUES (:name,:code,:price,:category_id,:brand,:availability,:description,:is_new,:is_recommended,:status)";
+        //$sql = "INSERT into product (name,code,price,category_id,brand,availability,description,is_new,is_recommended,status ) VALUES (:name,:code,:price,:category_id,:brand,:availability,:description,:is_new,:is_recommended,:status)";
+        $sql = "INSERT into product (name,image,code,upc,price,category_id,availability,is_new,is_recommended,status ) VALUES (:name,:image,:code,:upc,:price,:category_id,:availability,:is_new,:is_recommended,:status)";
 
         $result = $db->prepare($sql);
+        $result->bindParam(':image', $options['image'], PDO::PARAM_STR);
         $result->bindParam(':name', $options['name'], PDO::PARAM_STR);
         $result->bindParam(':code', $options['code'], PDO::PARAM_STR);
+        $result->bindParam(':upc', $options['upc'], PDO::PARAM_STR);
         $result->bindParam(':price', $options['price'], PDO::PARAM_STR);
         $result->bindParam(':category_id', $options['category_id'], PDO::PARAM_STR);
-        $result->bindParam(':brand', $options['brand'], PDO::PARAM_STR);
+        //$result->bindParam(':brand', $options['brand'], PDO::PARAM_STR);
         $result->bindParam(':availability', $options['availability'], PDO::PARAM_STR);
-        $result->bindParam(':description', $options['description'], PDO::PARAM_STR);
+        //$result->bindParam(':description', $options['description'], PDO::PARAM_STR);
         $result->bindParam(':is_new', $options['is_new'], PDO::PARAM_STR);
         $result->bindParam(':is_recommended', $options['is_recommended'], PDO::PARAM_STR);
         $result->bindParam(':status', $options['status'], PDO::PARAM_STR);
@@ -237,4 +265,54 @@ class Product
         }
         return $path . $noImage;
     }
+    public static function importProductFromFile(){
+        $file_handle = fopen("upload/content.csv", "r");
+        $recommended = 0;
+        $new = 0;
+        $i = 0;
+        $category = [1,2,3,4];
+        while (!feof($file_handle)) {
+                if($i%10 == 0){
+                    $recommended = 1;
+                }
+                else{
+                    $recommended = 0;
+                }
+                if($i%20 == 0){
+                    $new = 1;
+                }
+                else{
+                    $new = 0;
+                }
+                $line = fgets($file_handle);
+            if($i != 0){
+                try{
+                    $options = [];
+                    $pieces = explode(",", $line);
+                    $options['image'] = trim($pieces[0],'"');
+                    $options['code'] = $pieces[1];
+                    $options['upc'] = $pieces[2];
+                    $options['price'] = $pieces[3];
+                    $options['name'] = trim($pieces[4],'"');
+
+                    $options['category_id'] = array_rand($category,1)+1;
+                    $options['availability'] = 1;
+                    $options['is_new'] = $new;
+                    $options['is_recommended'] = $recommended;
+                    $options['status'] = 1;
+                    $id = Product::createProduct($options);
+                    echo $id;
+                }
+                catch (Exception $e){
+                    echo 'Caught exception: ',  $e->getMessage(), "\n";
+                }
+
+            }
+
+            $i++;
+            if($i == 10000) break;
+        }
+        fclose($file_handle);
+    }
+
 }

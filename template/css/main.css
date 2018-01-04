@@ -8,7 +8,6 @@
 
 body {
   font-family: 'Roboto', sans-serif;
-  background: #dcdcdc;
   position: relative;
   font-weight:400;
 }
@@ -834,7 +833,7 @@ h2.title:before{
 }
 
 .features_items{
-	overflow:hidden;
+  overflow:hidden;
   display: flex;
   align-items: flex-start;
   justify-content:space-around;
@@ -861,6 +860,7 @@ h2.title {
 
 .single-products {
   position: relative;
+  border: 2px outset #FE980F;
 }
 
 .new, .sale {
@@ -892,13 +892,20 @@ h2.title {
 }
 
 .productinfo img{
-  width: 100%;
-  height: 100%;
+  display: block;
+  margin: 0 auto;
 }
 
 .productinfo{
  position:relative;
 }
+.imagecontainer{
+  display:flex;
+  align-items: center;
+  position:relative;
+  height: 140px;
+}
+
 
 .product-overlay {
   background:#FE980F;
@@ -908,7 +915,6 @@ h2.title {
   position: absolute;
   transition: height 500ms ease 0s;
   width: 100%;
-  display: block;
   opacity:1;
 }
 
@@ -921,7 +927,6 @@ h2.title {
 .product-overlay .overlay-content {
   bottom: 0;
   position: absolute;
-  bottom: 0;
   text-align: center;
   width: 100%;
 }

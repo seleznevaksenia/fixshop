@@ -5,7 +5,7 @@
         <div class="row">
                         <div class="col-sm-3">
                 <div class="left-sidebar">
-                    <h2>Каталог</h2>
+                    <h2>Catalog</h2>
                     <div class="panel-group category-products">
                         <?php foreach ($categories as $categoryItem): ?>
                             <div class="panel panel-default">
@@ -27,7 +27,7 @@
                     <div class="row">
                         <div class="col-sm-5">
                             <div class="view-product">
-                                <img src="<?php echo '/template/images/'.$product['id'].'.jpg';?>" alt="" />
+                                <img src="<?php echo $product['image'];?>" alt="" />
                             </div>
                         </div>
                         <div class="col-sm-7">
@@ -47,14 +47,8 @@
                                 </span>
                                 <p><b>Availability:</b><?php echo $product['availability']; ?></p>
                                 <p><b>Condition:</b> <?php echo $product['is_new']; ?></p>
-                                <p><b>Brand:</b><?php echo $product['brand']; ?></p>
+                                <p><b>UPC:</b><?php echo $product['upc']; ?></p>
                             </div><!--/product-information-->
-                        </div>
-                    </div>
-                    <div class="row">                                
-                        <div class="col-sm-12">
-                            <h5>Description</h5>
-                            <?php echo $product['description'];?>
                         </div>
                     </div>
                 </div><!--/product-details-->

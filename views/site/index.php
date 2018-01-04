@@ -32,7 +32,9 @@
                                 <div class="product-image-wrapper">
                                     <div class="single-products">
                                         <div class="productinfo text-center">
-                                            <img src="<?php echo $product['image'];?>" alt="" />
+                                            <div class="imagecontainer">
+                                                <img src="<?php echo $product['image'];?>" alt="" />
+                                            </div>
                                             <h2><?php echo $product['price'];?>$</h2>
                                             <p>
                                                 <a href="/product/<?php echo $product['id'];?>">
@@ -55,52 +57,9 @@
                 </div><!--features_items-->
             </div>
         </div>
-                <div class="recommended_items"><!--recommended_items-->
-                    <h2 class="title text-center">Recommended products</h2>
-                </div><!--/recommended_items-->
-
 
     </div>
 </section>
-
-    <section style="height: 700px;">
-
-        <div id="myCarousel" class="carousel slide" data-ride="carousel" style="height: 700px;">
-            <!-- Indicators -->
-            <ol class="carousel-indicators">
-                <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-                <li data-target="#myCarousel" data-slide-to="1"></li>
-                <li data-target="#myCarousel" data-slide-to="2"></li>
-            </ol>
-            <div class="carousel-inner" role="listbox">
-                <div class="item active">
-                    <div class="container">
-                        <div class="carousel-caption car_heith">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="col-md-4">2345</div>
-                                    <div class="col-md-4">456</div>
-                                    <div class="col-md-4">678</div>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-
-
-            </div>
-            <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
-                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span>
-            </a>
-            <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
-                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
-            </a>
-        </div><!-- /.carousel -->
-
-    </section>
 
 
 <?php include ROOT . '/views/layouts/footer.php'; ?>

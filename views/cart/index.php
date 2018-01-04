@@ -5,7 +5,7 @@
             <div class="row">
                 <div class="col-sm-3">
                     <div class="left-sidebar">
-                        <h2>Каталог</h2>
+                        <h2>Catalog</h2>
                         <div class="panel-group category-products">
                             <?php foreach ($categories as $categoryItem): ?>
                                 <div class="panel panel-default">
@@ -24,17 +24,17 @@
 
                 <div class="col-sm-9 padding-right">
 
-                    <h2 class="title text-center">Корзина</h2>
-                    <h5>Вы выбрали такие товары</h5>
+                    <h2 class="title text-center">Cart</h2>
+                    <h5>You have chosen these goods</h5>
                     <table class="table">
                         <thead>
                         <tr>
 
-                            <th>Код товара</th>
-                            <th>Название</th>
-                            <th>Цена</th>
-                            <th>Количество</th>
-                            <th>Удалить</th>
+                            <th>Product code</th>
+                            <th>Title</th>
+                            <th>Price</th>
+                            <th>Amount</th>
+                            <th>Delete</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -60,7 +60,7 @@
                         </tr>
                         </tbody>
                     </table>
-                    <a href="/cart/checkout/" class="btn btn-default"><i class="fa fa-shopping-cart"></i>Оформить заказ</a>
+                    <a href="/cart/checkout/" class="btn btn-default"><i class="fa fa-shopping-cart"></i>Checkout</a>
 
                 </div><!--features_items-->
 

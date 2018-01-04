@@ -23,6 +23,7 @@ class Router
 
     public function run()
     {
+        $result = null;
         // Получить строку запроса
         $uri = $this->getURI();
         // Проверить наличие такого запроса в routes.php
@@ -30,10 +31,10 @@ class Router
 
             // Сравниваем $uriPattern и $uri
             if (preg_match("~$uriPattern~", $uri)) {
-                
+
                 // Получаем внутренний путь из внешнего согласно правилу.
                 $internalRoute = preg_replace("~$uriPattern~", $path, $uri);
-                                
+
                 // Определить контроллер, action, параметры
 
                 $segments = explode('/', $internalRoute);
@@ -52,11 +53,16 @@ class Router
                     include_once($controllerFile);
                 }
 
+
                 // Создать объект, вызвать метод (т.е. action)
                 $controllerObject = new $controllerName;
-
-                $result = call_user_func_array(array($controllerObject, $actionName), $parameters);
-                
+                //Обработка ошибки
+                try {
+                    error_reporting(E_ALL ^ E_WARNING);
+                    $result = call_user_func_array(array($controllerObject, $actionName), $parameters);
+                    throw new Exception($result);
+                }catch(Exception $e){
+                }
                 
                 if ($result != null) {
                     break;

@@ -3,14 +3,19 @@
 class CatalogController
 {
 
-    public function actionIndex()
+    public function actionIndex($page = 1)
     {
 
         $categories = array();
         $categories = Category::getCategoriesList();
 
         $catalogProducts = array();
-        $catalogProducts = Product::getProductsList();
+        $catalogProducts = Product::getProductsList($page);
+
+        $total = Product::getTotalProducts();
+
+        // Создаем объект Pagination - постраничная навигация
+        $pagination = new Pagination($total, $page, Product::SHOW_BY_DEFAULT, 'page-');
 
         require_once(ROOT . '/views/catalog/index.php');
 

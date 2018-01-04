@@ -5,13 +5,13 @@
             <div class="row">
 
                 <div class="col-sm-4 col-sm-offset-3 padding-right">
-                    <h2 class="title text-center"> Корзина</h2>
+                    <h2 class="title text-center">Cart</h2>
 
                     <?php if ($result): ?>
-                        <p>Заказ формлен!Мы Вам перезвоним!</p>
+                        <p>Order issued! We will call you back!</p>
                     <?php else: ?>
-                        <p>Выбрано товаров: <?php echo $totalQuontity; ?>ед., на сумму:<?php echo $totalPrice; ?>
-                            грн.</p>
+                        <p>Selected items: qty:<?php echo $totalQuontity; ?>, sum:<?php echo $totalPrice; ?>
+                            USD</p>
                         <?php if (isset($errors) && is_array($errors)): ?>
                             <ul>
                                 <?php foreach ($errors as $error): ?>
@@ -21,21 +21,21 @@
                         <?php endif; ?>
 
                         <div class="signup-form"><!--sign up form-->
-                            <h2>Оформление заказа</h2>
+                            <h2>Ordering</h2>
                             <form action="#" method="post">
-                                <label>Имя</label>
+                                <label>Name</label>
                                 <?php if (User::isGuest()): ?>
-                                    <input type="text" name="name" placeholder="Имя" value=""/>
+                                    <input type="text" name="name" placeholder="Name" value=""/>
                                 <?php else: ?>
-                                    <input type="text" name="name" placeholder="Имя" value="<?php echo $userName; ?>"/>
+                                    <input type="text" name="name" placeholder="Name" value="<?php echo $userName; ?>"/>
                                 <?php endif; ?>
-                                <label>Номер телефона</label>
-                                <input type="tel" name="phoneNumber" placeholder="Телефон"
+                                <label>Phone</label>
+                                <input type="tel" name="phoneNumber" placeholder="Phone"
                                        value="<?php echo $phoneNumber; ?>"/>
-                                <label>Комментарий к заказу</label>
-                                <input type="text" name="comment" placeholder="Комментарий"
+                                <label>Comments</label>
+                                <input type="text" name="comment" placeholder="Comments"
                                        value="<?php echo $comment; ?>"/>
-                                <input type="submit" name="submit" class="btn btn-default" value="Оформить"/>
+                                <input type="submit" name="submit" class="btn btn-default" value="Checkout"/>
                             </form>
                         </div><!--/sign up form-->
 
